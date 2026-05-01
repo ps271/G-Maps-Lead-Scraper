@@ -1,9 +1,22 @@
 import os
 from dotenv import load_dotenv
 from utils.config_utils import get_env, get_bool, get_int, get_list
+import logging
+
+
 # Project root = same directory as config.py
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
+
+# Configure logging
+logging.basicConfig(
+    filename=f'{PROJECT_ROOT}/logs/scraper.log',       # file where logs are saved
+    level=logging.INFO,           # log INFO and above
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='w'
+)
+
+logger = logging.getLogger(__name__)
 
 # Single Values
 KEYWORD = get_env("KEYWORD")
@@ -46,3 +59,5 @@ USER_AGENTS = [
     "AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/145.0.0.0 Safari/537.36"
 ]
+
+seen_places = {}

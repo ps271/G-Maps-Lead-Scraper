@@ -1,6 +1,5 @@
 selenium
 pandas
-beautifulsoup4
+openpyxl
 webdriver-manager
-undetected_chromedriver
 python-dotenv
